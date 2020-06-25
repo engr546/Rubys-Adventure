@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    Rigidbody2D rigidbody2d;
+    float horizontal;
+    float vertical;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        rigidbody2d = GetComponent<Rigidbody2D>();
+    }
 
+    // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector2 position = transform.position;
-        position.x += 3.0f * horizontal * Time.deltaTime;
-        position.y += 3.0f * vertical * Time.deltaTime;
-        transform.position = position;
-        
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+    }
+
+    void FixedUpdate()
+    {
+        Vector2 position = rigidbody2d.position;
+        position.x += 3.0f * horizontal * Time.fixedDeltaTime;
+        position.y += 3.0f * vertical * Time.fixedDeltaTime;
+
+        rigidbody2d.MovePosition(position);
     }
 
 }
