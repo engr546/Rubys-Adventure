@@ -5,12 +5,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int Health { get; private set; }
+    
     public int maxHealth = 5;
     public float speed = 3.0f;
+    public float timeInvicible = 2.0f;
 
     Rigidbody2D rigidbody2d;
+
     float horizontal;
     float vertical;
+    float invicibleTimer;
+    bool isInvicible;
 
 
     // Start is called before the first frame update
@@ -25,6 +30,14 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
+        if (isInvicible)
+        {
+            invicibleTimer -= Time.deltaTime;
+            if (invicibleTimer < 0)
+                isInvicible = false;
+        }
+
     }
 
     void FixedUpdate()
@@ -39,6 +52,15 @@ public class PlayerController : MonoBehaviour
     //Add Health
     public void ChangeHealth(int amount)
     {
+        if (amount < 0)
+        {
+            if (isInvicible)
+                return;
+
+            isInvicible = true;
+            invicibleTimer = timeInvicible;
+        }
+
         Health = Mathf.Clamp(Health + amount, 0, maxHealth);
         Debug.Log(Health + "/" + maxHealth);
     }
