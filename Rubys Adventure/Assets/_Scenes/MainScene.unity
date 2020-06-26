@@ -9702,31 +9702,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1412373325}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1448433292 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4784984812316459687, guid: b59aeea6991df7f4a94c66bab7d6fbb4,
-    type: 3}
-  m_PrefabInstance: {fileID: 4784984813234694431}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1448433293
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448433292}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b77822e0485373d40b5beb92e9a5e728, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1454028381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11265,16 +11240,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3544546961554158545, guid: b59aeea6991df7f4a94c66bab7d6fbb4,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4784984812316459684, guid: b59aeea6991df7f4a94c66bab7d6fbb4,
-        type: 3}
-      propertyPath: speed
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4784984812316459685, guid: b59aeea6991df7f4a94c66bab7d6fbb4,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int Health { get; private set; }
+    public GameObject projectilePrefab;
 
     public int maxHealth = 5;
     public float speed = 3.0f;
     public float timeInvicible = 2.0f;
+    public float projectileForce = 300.0f;
 
     Rigidbody2D rigidbody2d;
     Animator animator;
@@ -53,6 +55,9 @@ public class PlayerController : MonoBehaviour
                 isInvicible = false;
         }
 
+        if (Input.GetButtonDown("Fire1"))
+            Launch();
+
     }
 
     void FixedUpdate()
@@ -79,6 +84,16 @@ public class PlayerController : MonoBehaviour
 
         Health = Mathf.Clamp(Health + amount, 0, maxHealth);
         Debug.Log(Health + "/" + maxHealth);
+    }
+
+    void Launch()
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(lookDirection, projectileForce);
+
+        animator.SetTrigger("Launch");
     }
 
 }
