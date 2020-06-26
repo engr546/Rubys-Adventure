@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int Health { get; private set; }
+    public int maxHealth = 5;
+    public float speed = 3.0f;
+
     Rigidbody2D rigidbody2d;
     float horizontal;
     float vertical;
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        Health = maxHealth;
     }
 
     // Update is called once per frame
@@ -24,10 +30,17 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
-        position.x += 3.0f * horizontal * Time.fixedDeltaTime;
-        position.y += 3.0f * vertical * Time.fixedDeltaTime;
+        position.x += speed * horizontal * Time.fixedDeltaTime;
+        position.y += speed * vertical * Time.fixedDeltaTime;
 
         rigidbody2d.MovePosition(position);
+    }
+
+    //Add Health
+    public void ChangeHealth(int amount)
+    {
+        Health = Mathf.Clamp(Health + amount, 0, maxHealth);
+        Debug.Log(Health + "/" + maxHealth);
     }
 
 }
