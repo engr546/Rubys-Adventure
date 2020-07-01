@@ -16,7 +16,7 @@ TagManager:
   - Player
   - Projectile
   - Confiner
-  - 
+  - NPC
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Enemies
     uniqueID: 26538615
+    locked: 0
+  - name: NPC
+    uniqueID: 1509807563
     locked: 0
   - name: Player
     uniqueID: 2887155423
