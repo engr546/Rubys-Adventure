@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int Health { get; private set; }
     public GameObject projectilePrefab;
+    public AudioClip throwSound;
+    public AudioClip hitSound;
+        
+    public int Health { get; private set; }
 
     public int maxHealth = 5;
     public float speed = 3.0f;
@@ -15,6 +18,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidbody2d;
     Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
+    AudioSource audioSource;
 
     float horizontal;
     float vertical;
@@ -27,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         Health = maxHealth;
     }
 
@@ -95,20 +100,28 @@ public class PlayerController : MonoBehaviour
 
             isInvicible = true;
             invicibleTimer = timeInvicible;
+
+            PlaySound(hitSound);
+
         }
 
         Health = Mathf.Clamp(Health + amount, 0, maxHealth);
         UIHealthBar.instance.SetValue(Health / (float)maxHealth);
     }
 
+    //Play Sound
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+
     void Launch()
     {
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
-
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, projectileForce);
-
         animator.SetTrigger("Launch");
+        PlaySound(throwSound);
     }
 
 }

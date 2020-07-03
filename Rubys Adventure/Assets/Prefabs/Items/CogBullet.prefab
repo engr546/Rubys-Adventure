@@ -141,3 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b300e93681901ff43bf6f3b8e09f9bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileClip: {fileID: 8300000, guid: b2edfd40873655249ba0e01a5cf705be, type: 3}
+  timer: 3

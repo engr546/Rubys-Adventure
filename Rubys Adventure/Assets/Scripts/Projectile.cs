@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
 
     public float timer = 3.0f;
-
+    
     new Rigidbody2D rigidbody2D;
 
     // Start is called before the first frame update
