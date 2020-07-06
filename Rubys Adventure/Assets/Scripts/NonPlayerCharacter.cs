@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Script to Control the NPC's Behaviour
+/// </summary>
 public class NonPlayerCharacter : MonoBehaviour
 {
 
@@ -10,14 +11,18 @@ public class NonPlayerCharacter : MonoBehaviour
 
     float timerDisplay;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Disables the Dialog Box and sets timerDisplay to less than 0
+    /// </summary>
     void Start()
     {
         dialogBox.SetActive(false);
         timerDisplay = -1.0f;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// if timerDisplay > 0, Deduct the timerDisplay and Set the Dialog Box to false
+    /// </summary>
     void Update()
     {
         if (timerDisplay > 0)
@@ -28,6 +33,9 @@ public class NonPlayerCharacter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Display the Dialog Box and Set timerDisplay to displayTime (4.0f)
+    /// </summary>
     public void DisplayDialog()
     {
         timerDisplay = displayTime;
